@@ -1,0 +1,85 @@
+* { box-sizing: border-box; }
+
+body.report-page {
+  margin: 0;
+  color: #15352b;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(110, 231, 183, .45), transparent 28rem),
+    linear-gradient(145deg, #f0fdf4, #dcfce7 55%, #bbf7d0);
+}
+
+.report-main {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 1rem;
+}
+
+.report-heading { max-width: 800px; margin: 0 auto 2rem; text-align: center; }
+.report-heading .eyebrow { margin: 0 0 .5rem; color: #047857; font-size: .76rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.report-heading h1 { margin: 0; color: #064e3b; font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1; letter-spacing: -.045em; }
+.report-heading > p:not(.eyebrow) { max-width: 650px; margin: 1rem auto 0; color: #41675a; line-height: 1.7; }
+
+.report-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.5rem; }
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-height: 2.9rem;
+  padding: .75rem 1.1rem;
+  color: #fff;
+  background: #047857;
+  border: 2px solid #047857;
+  border-radius: 999px;
+  font-size: .86rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.action-button-secondary { color: #047857; background: #fff; }
+.action-button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(4,120,87,.22); }
+.action-button:focus-visible, .viewer-bar a:focus-visible { outline: 3px solid #facc15; outline-offset: 3px; }
+
+.report-viewer {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(6, 95, 70, .18);
+  border-radius: 20px;
+  box-shadow: 0 22px 65px rgba(4, 78, 56, .17);
+}
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: .85rem 1.1rem;
+  color: #fff;
+  background: #064e3b;
+}
+.viewer-bar > div { display: flex; align-items: center; gap: .65rem; min-width: 0; }
+.viewer-bar h2 { overflow: hidden; margin: 0; font-size: .94rem; text-overflow: ellipsis; white-space: nowrap; }
+.status-dot { flex: 0 0 auto; width: .68rem; height: .68rem; background: #34d399; border-radius: 50%; box-shadow: 0 0 0 4px rgba(52,211,153,.16); }
+.viewer-bar a { flex: 0 0 auto; color: #d1fae5; font-size: .78rem; font-weight: 800; text-decoration: none; }
+.viewer-bar a:hover { color: #fff; }
+
+.pdf-window { display: block; width: 100%; height: min(78vh, 920px); min-height: 620px; border: 0; background: #e5e7eb; }
+.pdf-fallback { display: grid; place-items: center; align-content: center; gap: .8rem; min-height: 620px; padding: 2rem; color: #365f52; text-align: center; }
+.pdf-fallback i { color: #047857; font-size: 3rem; }
+.pdf-fallback p { margin: 0; }
+.pdf-fallback a { color: #047857; font-weight: 800; }
+
+@media (max-width: 640px) {
+  .report-main { width: min(100% - 1rem, 1180px); }
+  .viewer-bar { align-items: flex-start; flex-direction: column; }
+  .pdf-window { height: 70vh; min-height: 500px; }
+  .report-actions { align-items: stretch; flex-direction: column; }
+  .action-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-button { transition: none; }
+  .action-button:hover { transform: none; }
+}

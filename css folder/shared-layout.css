@@ -1,0 +1,224 @@
+:root {
+  --forest-950: #052e20;
+  --forest-900: #064e3b;
+  --forest-700: #047857;
+  --forest-600: #059669;
+  --mint-400: #34d399;
+  --mint-100: #d1fae5;
+  --surface: #ffffff;
+  --ink: #15352b;
+}
+
+html { min-height: 100%; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#site-header {
+  position: relative;
+  z-index: 30;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  box-shadow: none;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  text-align: initial;
+}
+
+.project-header,
+.project-header * { box-sizing: border-box; }
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: .85rem clamp(1rem, 4vw, 3rem);
+  color: #fff;
+  background: linear-gradient(120deg, var(--forest-950), var(--forest-700));
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 8px 24px rgba(5, 46, 32, .2);
+}
+
+.project-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  color: #fff;
+  text-decoration: none;
+  min-width: max-content;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  color: var(--forest-950);
+  background: var(--mint-400);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.12);
+}
+
+.project-brand > span:last-child { display: grid; gap: .05rem; }
+.project-brand strong { font-size: 1.02rem; letter-spacing: .01em; }
+.project-brand small { color: rgba(255,255,255,.75); font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; }
+
+.project-header .nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .38rem;
+  margin: 0;
+}
+
+.project-header .nav-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .62rem .78rem;
+  color: rgba(255,255,255,.9);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.project-header .nav-buttons .btn:hover,
+.project-header .nav-buttons .btn[aria-current="page"] {
+  color: var(--forest-950);
+  background: var(--mint-100);
+  border-color: rgba(255,255,255,.55);
+  transform: translateY(-2px);
+}
+
+.project-header a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 3px;
+}
+
+/* The spacing area gives every page a calm transition into the animated footer. */
+#site-footer {
+  margin-top: auto;
+  padding-top: clamp(5.5rem, 11vw, 8.5rem);
+}
+
+.site-footer,
+.site-footer * { box-sizing: border-box; }
+
+.site-footer {
+  --footer-background: #167354;
+  position: relative;
+  z-index: 12;
+  min-height: 7.5rem;
+  margin: 0;
+  padding: 0;
+  color: #062d21;
+  background: var(--footer-background);
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: left;
+}
+
+.footer-bubbles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1rem;
+  background: var(--footer-background);
+  filter: url("#footer-goo");
+}
+
+.footer-bubbles .bubble {
+  position: absolute;
+  bottom: -3rem;
+  left: var(--position, 50%);
+  width: var(--size, 4rem);
+  height: var(--size, 4rem);
+  background: var(--footer-background);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s), bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 7.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.35rem 2rem;
+}
+
+.footer-copy { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+.footer-copy strong { color: #04271d; white-space: nowrap; font-size: 1rem; }
+.footer-copy p { max-width: 430px; margin: 0; color: rgba(4,39,29,.82); font-size: .74rem; line-height: 1.45; }
+.footer-links { display: flex; align-items: center; justify-content: flex-end; gap: .3rem; }
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .55rem .65rem;
+  color: #062d21;
+  border-radius: 9px;
+  font-size: .73rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.footer-links a:hover { background: rgba(255,255,255,.3); transform: translateY(-2px); }
+.footer-filter { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+@keyframes bubble-size {
+  0%, 75% { width: var(--size, 4rem); height: var(--size, 4rem); }
+  100% { width: 0; height: 0; }
+}
+
+@keyframes bubble-move {
+  from { bottom: -4rem; }
+  to { bottom: var(--distance, 10rem); }
+}
+
+@media (max-width: 880px) {
+  .project-header { flex-direction: column; align-items: stretch; }
+  .project-brand { justify-content: center; }
+  .project-header .nav-buttons { justify-content: center; }
+  .footer-content { flex-direction: column; gap: .8rem; text-align: center; }
+  .footer-copy { flex-direction: column; gap: .25rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 520px) {
+  .project-header { padding: .75rem; }
+  .project-header .nav-buttons { gap: .2rem; }
+  .project-header .nav-buttons .btn { padding: .58rem .62rem; font-size: .75rem; }
+  .project-header .nav-buttons .btn i { display: none; }
+  .footer-content { padding-inline: 1rem; }
+  .footer-links a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .footer-links a { min-width: 2.5rem; min-height: 2.5rem; justify-content: center; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-header *,
+  .footer-bubbles .bubble,
+  .footer-links a { animation: none !important; transition: none !important; }
+  .project-header .nav-buttons .btn:hover,
+  .footer-links a:hover { transform: none; }
+}

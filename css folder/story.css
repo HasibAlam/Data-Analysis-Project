@@ -1,0 +1,211 @@
+/* ================================
+   Reset & Basic Page Styles
+   ================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: #fafafa;
+  color: #333;
+}
+
+/* Center the main content block, give some top/bottom padding */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Page title styling */
+.page-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* ================================
+   Storyboard Grid Container
+   ================================ */
+.storyboard {
+  display: grid;
+  /* Three equally sized columns */
+  grid-template-columns: repeat(3, 1fr);
+  /* Automatic row height (based on content) */
+  grid-auto-rows: auto;
+  gap: 2rem; /* space between each scenario card */
+}
+
+/* ================================
+   Individual Scenario Cards
+   ================================ */
+.scenario {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Make each “card” a flex container in column direction */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Scenario Title */
+.scenario h3 {
+  font-size: 1.25rem;
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ccc;
+  font-weight: 500;
+}
+
+/* Scenario Image */
+.scenario img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container for the text paragraphs */
+.text-block {
+  padding: 1rem;
+  font-size: 0.95rem;
+  flex: 1; /* push the content to fill available space */
+}
+
+/* Dialogue paragraphs styling */
+.text-block p {
+  margin-bottom: 0.75rem;
+}
+
+/* Bold speaker names */
+.text-block p strong {
+  color: #111;
+}
+
+/* ================================
+   Special Positioning for Scenario 7
+   ================================ */
+.scenario-7 {
+  /* Force this card to sit in the center column */
+  grid-column: 2 / 3;
+}
+
+/* ================================
+   Responsive Breakpoints
+   ================================ */
+/* When the viewport is narrower than 1024px, switch to 2 columns */
+@media (max-width: 1024px) {
+  .storyboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Let scenario 7 span both columns so it stays centered */
+  .scenario-7 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* When the viewport is narrower than 600px, stack in a single column */
+@media (max-width: 600px) {
+  .storyboard {
+    grid-template-columns: 1fr;
+  }
+  /* On single column, scenario 7 is already full width, so no change needed */
+  .scenario-7 {
+    grid-column: auto;
+  }
+}
+/* ================================
+   2. Header & Navigation Buttons
+   ================================ */
+header {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+nav.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+nav.nav-buttons .btn {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+nav.nav-buttons .btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Responsive tweak: shrink header font on small screens */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+  nav.nav-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+/* ------------------------------------------
+   Footer: Flex layout & spacing
+   ------------------------------------------ */
+footer {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1rem 2rem;
+  /* Make sure footer sticks to bottom if you have a flex parent on body */
+  flex-shrink: 0;
+}
+
+.footer-content {
+  display: flex;
+  /* Spread the spans evenly across the width */
+  justify-content: space-between;
+  /* Allow wrapping on very narrow screens (mobile) */
+  flex-wrap: wrap;
+  gap: 1rem;              /* space between each span if they wrap */
+  max-width: 1200px;      /* optional: constrain total width */
+  margin: 0 auto;         /* center the content block horizontally */
+}
+
+.footer-content span {
+  flex: 1;                /* each span takes up equal “share” of the row */
+  text-align: center;     /* center text inside each span */
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+/* Responsive tweak: stack spans vertically on very narrow screens */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-content span {
+    flex: none;  /* cancel the equal‐share on very small */
+  }
+}

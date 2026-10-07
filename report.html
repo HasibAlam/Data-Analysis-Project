@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read the Traffic Fines Data Analysis report and download the supporting KNIME workflow." />
+  <title>Project Report | Traffic Fines Data Analysis</title>
+  <link rel="stylesheet" href="css folder/report.css" />
+  <link rel="stylesheet" href="css folder/shared-layout.css" />
+</head>
+<body class="report-page">
+  <div id="site-header"></div>
+
+  <main class="report-main">
+    <section class="report-heading">
+      <p class="eyebrow">Research and workflow</p>
+      <h1>Project Report</h1>
+      <p>Read the complete data book below, open it in a dedicated PDF viewer, or download the supporting report and KNIME workflow.</p>
+      <div class="report-actions" aria-label="Report downloads">
+        <a class="action-button" href="assets%20folder/Data_Visualisation_Report.pdf" download>
+          <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+          Download report
+        </a>
+        <a class="action-button action-button-secondary" href="assets%20folder/Traffic_Fines_Analysis.knwf" download>
+          <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+          Download KNIME file
+        </a>
+      </div>
+    </section>
+
+    <section class="report-viewer" aria-labelledby="viewer-title">
+      <div class="viewer-bar">
+        <div>
+          <span class="status-dot" aria-hidden="true"></span>
+          <h2 id="viewer-title">Traffic Fines Data Analysis</h2>
+        </div>
+        <a href="assets%20folder/Data_Visualisation_Report.pdf" target="_blank" rel="noopener noreferrer">
+          Open full screen <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+      <object class="pdf-window" data="assets%20folder/Data_Visualisation_Report.pdf#view=FitH" type="application/pdf">
+        <div class="pdf-fallback">
+          <i class="fa-regular fa-file-pdf" aria-hidden="true"></i>
+          <p>Your browser cannot display the embedded PDF.</p>
+          <a href="assets%20folder/Data_Visualisation_Report.pdf" target="_blank" rel="noopener noreferrer">Open the report</a>
+        </div>
+      </object>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js folder/header-footer.js"></script>
+</body>
+</html>

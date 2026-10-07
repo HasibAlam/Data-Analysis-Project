@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Traffic Fines Data Story | Hasib Alam</title>
+  <link rel="stylesheet" href="css folder/style.css" />
+  <link rel="stylesheet" href="css folder/shared-layout.css" />
+</head>
+<body>
+
+  <!-- HEADER (injected via JS) -->
+  <div id="site-header"></div>
+
+  <!-- MAIN CONTENT -->
+  <main> 
+    <div class="content-container">
+      <h2>Data Story: “A Drive to Learn: Dad, Son, and the Reality of Mobile Phone Fines”</h2>
+
+      <!-- Scene 1 -->
+    <section>
+  <h3>Scene 1: The Start – A New Car, A New Freedom</h3>
+  <p><strong>Jack:</strong> “Dad, look! I finally got my car. I can drive now!”</p>
+  <p><strong>Dad:</strong> “That's great, Jack. But remember, driving is a responsibility, not just freedom.”</p>
+  <p><strong>Jack (laughs):</strong> “Come on, Dad. Everyone uses their phones while driving. I won’t get caught.”</p>
+  <p><strong>Dad:</strong> “That’s where you’re wrong, son. Let me show you something.”</p>
+
+  <!-- ✅ Image inserted -->
+  <img src="assets folder/storyintro.jpeg" alt="Jack shows his new car to Dad" style="width:100%; max-width:600px; margin-top:1rem; border-radius:8px;">
+</section>
+
+
+      <!-- Scene 2 -->
+      <section>
+        <h3>Scene 2: The Reality of Mobile Phone Fines</h3>
+        <p><strong>Dad:</strong> “See this graph? It shows how many mobile phone fines have been issued each year since 2008.”</p>
+         <p><strong>Jack:</strong> “Wait what are shown by those lines.”</p>
+        <p><strong>Dad:</strong> “the blue lines show fines given by police and orange is by camera ”</p>
+        <p><strong>Jack (Astonished):</strong> “Whoa! So many fines ”</p>
+        <div id="chart-timeline"><svg></svg></div>
+        <button id="reset-timeline" class="reset-button">Reset Timeline</button>
+       
+
+      </section>
+
+     
+     <!-- Scene 3 -->
+<section>
+  <h3>Scene 3: The Difference Across Australia</h3>
+  <p><strong>Dad:</strong> “Yes now lets look at fines across different jurisdiction</p>
+  <p><strong>Dad:</strong> “The darker the blue the more the numbers and victoria is at top and Jack we live in heart of victoria.”</p>
+
+  <!-- ✅ Add this chart container -->
+  <div id="map-chart" class="chart-box"></div>
+  <button id="reset-map" class="reset-button">Reset Map</button>
+</section>
+
+
+      <!-- Scene 4 -->
+      <section>
+        <h3>Scene 4: Dad is it just mobile phones what about other types?</h3>
+        <p><strong>Dad:</strong> “Here’s a chart of different types of fines per jurisdiction”</p>
+        <p><strong>Jack:</strong> “Speeding and mobile phone fines are through the roof. I wanted to race with my friends”</p>
+        <div id="chart-bar"><svg></svg></div>
+        <button id="reset-bar" class="reset-button">Reset Bar</button>
+      </section>
+
+      <!-- Scene 5 -->
+      <section>
+        <h3>Scene 5: The age group involved the most</h3>
+        <p><strong>Dad:</strong> “Look at the pie chart Jack. The number of fines got in 2023 and look your age group is the most frequent</p>
+         <p><strong>Jack (Ashamed):</strong> “I understand now that why my friends pay so much for fines ”</p> 
+        <div id="chart-pie"><svg></svg></div>
+        <button id="reset-pie" class="reset-button">Reset Pie</button>
+
+      </section>
+
+      <!-- Scene 6 -->
+      <section>
+        <h3>Scene 6: Fianlly where you get caught?</h3>
+        <p><strong>Dad:</strong> “Most of the drivers getting caught are your age—25 to 34 years old and in Vitoria and NSW.”</p>
+        <p><strong>Dad:</strong> “Each box shows the state and age group and colour represents fines. More darker more fines”</p>
+        <p><strong>Jack:</strong> “Our state Victoia even crossed new south wales! I understood why you always warn me Dad.”</p>
+
+       <div id="chart-heatmap"><svg></svg></div>
+        <button id="reset-heatmap" class="reset-button">Reset Heatmap</button>
+      </section>
+
+      <!-- Scene 7 -->
+      <section>
+        <h3>Scene 7: The Lesson Learned</h3>
+        <p><strong>Jack:</strong> “I just thought… if no one’s watching, I wouldn’t get caught.”</p>
+        <p><strong>Dad:</strong> “Technology is always watching. But it’s not just about fines… it’s about staying safe.”</p>
+         <p><strong>Jack:</strong> “Thanks Dad because of you and your visual statistics helped me to acess the danger of getting fines. The variety of charts and visuals helped me compare and judge the stats .”</p>
+<img src="assets folder/stroyend.jpeg" alt="Jack shows his new car to Dad" style="width:100%; max-width:600px; margin-top:1rem; border-radius:8px;">
+        </section>
+    </div>
+  </main>
+
+  <!-- FOOTER (injected via JS) -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <!-- D3 + your drawing logic -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="js folder/vis2.js"></script>
+
+<!-- Only for index.html: Load & render map and timeline -->
+<script>
+  Promise.all([
+    d3.csv("data folder/annual_fines_by_metric.csv", d => ({
+      jurisdiction: d.JURISDICTION,
+      metric: d.METRIC,
+      fines: +d["Sum(FINES)"]
+    })),
+    d3.csv("data folder/mobile_timeline_camera_police.csv", d => ({
+      year: +d.YEAR,
+      method: d.DETECTION_METHOD,
+      fines: +d["Sum(FINES)"]
+    })),
+    d3.csv("data folder/agegroup_pie_2023.csv", d => ({
+      age: d.AGE_GROUP,
+      fines: +d["Sum(FINES)"]
+    })),
+    d3.csv("data folder/mobile_age_heatmap_2023.csv", d => ({
+      jurisdiction: d.JURISDICTION,
+      age: d.AGE_GROUP,
+      fines: +d["Sum(FINES)"]
+    })),
+    d3.csv("data folder/cleaned_fines_data.csv", d => ({
+      jurisdiction: d.JURISDICTION,
+      detection_method: d.DETECTION_METHOD,
+      fines: +d.FINES,
+      year: d.YEAR.toString()
+    }))
+  ]).then(([barData, tlDataRaw, pieData, heatmapData, mapData]) => {
+    // Optional: drawTimeline(tlDataRaw); 
+    drawAustraliaMap(mapData, "2023");
+  });
+</script>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js folder/vis2.js"></script>
+  <script src="js folder/header-footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Visualisation Dashboard</title>
+  <link rel="stylesheet" href="css folder/vis2.css" />
+  <link rel="stylesheet" href="css folder/shared-layout.css" />
+
+</head>
+<body>
+ <div id="site-header"></div>
+  <div class="header">
+    <h1>Data Visualisation Dashboard</h1>
+  </div>
+
+  <!-- 🔽 Filter Dropdowns -->
+  <div class="dropdowns">
+    <label for="jurisdiction-select">Jurisdiction:</label>
+    <select id="jurisdiction-select"><option>All</option></select>
+
+    <label for="year-select">Year:</label>
+    <select id="year-select"><option>All</option></select>
+
+    <label for="method-select">Method:</label>
+    <select id="method-select"><option>All</option></select>
+  </div>
+
+  <div class="charts-container">
+
+    <!-- 1. Stacked Bar Chart -->
+    <div class="chart-box">
+      <h3>Annual Fines by Offence Type per Jurisdiction (2008 to 2023)</h3>
+      <div id="chart-bar"><svg></svg></div>
+      <button id="reset-bar" class="reset-button">Reset Bar</button>
+    </div>
+  
+    <!-- 2. Timeline Line Chart -->
+    <div class="chart-box">
+      <h3>Mobile-Phone Fines: Police vs Camera</h3>
+      <div id="chart-timeline"><svg></svg></div>
+      <button id="reset-timeline" class="reset-button">Reset Timeline</button>
+    </div>
+  
+    <!-- 3. Pie Chart -->
+    <div class="chart-box">
+      <h3>Age-Group Share of All Offences (2023)</h3>
+      <div id="chart-pie"><svg></svg></div>
+      <button id="reset-pie" class="reset-button">Reset Pie</button>
+    </div>
+  
+    <!-- 4. Heatmap -->
+    <div class="chart-box">
+      <h3>Mobile-Phone Fines Heatmap (2023)</h3>
+      <div id="chart-heatmap"><svg></svg></div>
+      <button id="reset-heatmap" class="reset-button">Reset Heatmap</button>
+    </div>
+  
+    <!-- 5. Choropleth Map -->
+    <div class="chart-box">
+      <h3>Total Mobile-Phone Fines per Jurisdiction (2008 to 2023)</h3>
+      <div id="map-chart"><svg></svg></div>
+      <button id="reset-map" class="reset-button">Reset Map</button>
+    </div>
+  
+  
+  </div>
+
+  <!-- Overlay for view data -->
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-content"></div>
+    <button id="close-overlay">Close</button>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <!-- ✅ Load D3 + main script -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js folder/vis2.js"></script>
+<script src="js folder/header-footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Hide filters if not in use */
+.dropdowns {
+  display: none;
+}
+
+/* Chart Container Styling */
+.charts-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.chart-box {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.chart-box h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* SVG Style for Consistent Height */
+.chart-box svg {
+  width: 100%;
+  height: 400px;
+}
+
+/* Reset buttons under charts */
+.reset-button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.reset-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Tooltip (if used in JS) */
+.tooltip {
+  position: absolute;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+/* Overlay styling */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+#close-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Heatmap specific */
+#chart-heatmap rect:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+#chart-heatmap rect.selected {
+  stroke: red;
+  stroke-width: 2px;
+}
+
+/* Pie Chart arc interactions */
+.arc:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  opacity: 0.85;
+}
+.arc-selected {
+  transform: scale(1.15);
+}
+
+/* Responsive fix for small screens */
+@media screen and (max-width: 600px) {
+  .chart-box {
+    padding: 0.5rem;
+  }
+
+  .reset-button {
+    font-size: 0.75rem;
+  }
+}
+/* Injected header styling */
+#site-header {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Optional: If the header includes nav buttons or branding */
+#site-header .nav-buttons {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#site-header .nav-buttons .btn {
+  background-color: #ffffffdd;
+  color: #222;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#site-header .nav-buttons .btn:hover {
+  background-color: white;
+  color: black;
+}
